@@ -18,6 +18,7 @@ td
 {
 	align:        center;
 	padding-right: 10px;
+	border-left: 1px solid #000000;
 	border-right: 1px solid #000000;
 }
 </style>
@@ -57,19 +58,15 @@ td
 		<colgroup span="14" width="36"></colgroup>
 		<tbody>
 			<tr><td class="left" style="height: 22px"><b>IP address 1</b></td>
-				<td>:</td>
 				<td class="right sdval="0" sdnum="1033;"><b>172.16.12.0</b></td>
 			</tr>
 			<tr><td class="left" style="height: 22px"><b>IP address 2</b></td>
-				<td>:</td>
 				<td class="right sdval="0" sdnum="1033;"><b>172.16.13.0</b></td>
 			</tr>
 			<tr><td class="left" style="height: 22px"><b>IP address 3</b></td>
-				<td>:</td>
 				<td class="right sdval="0" sdnum="1033;"><b>172.16.14.0</b></td>
 			</tr>
 			<tr><td class="left" style="height: 22px"><b>IP address 4</b></td>
-				<td>:</td>
 				<td class="right" sdval="0" sdnum="1033;"><b>172.16.15.0</b></td>
 			</tr>
 		</tbody>
@@ -79,7 +76,7 @@ td
 	A will convert these IP addresses to binary format, align them and find the boundary line between the common part on the left (where all bits are equal), and the uncommon part on the right.
 	<br><br>
 	<table cellspacing="0" cols="16" border="0" style="margin-left: 15%;">
-		<colgroup width="129"></colgroup>
+		<colgroup width="140"></colgroup>
 		<colgroup width="18"></colgroup>
 		<colgroup span="14" width="36"></colgroup>
 		<tbody>
@@ -92,24 +89,24 @@ td
 			</tr>
 			<tr><td class="left" style="height: 22px"><b>IP address 2</b></td>
 				<td>:</td>
-				<td sdval="0" sdnum="1033;"><b>10101100</b></td>
-				<td sdval="1" sdnum="1033;"><b>00010000</b></td>
-				<td sdval="2" sdnum="1033;"><b>00001101</b></td>
-				<td class="right" sdval="3" sdnum="1033;"><b>00000000</b></td>
+				<td class="left"><b>10101100</b></td>
+				<td class="left"><b>00010000</b></td>
+				<td class="left"><b>00001101</b></td>
+				<td class="right"><b>00000000</b></td>
 			</tr>
 			<tr><td class="left" style="height: 22px"><b>IP address 3</b></td>
 				<td>:</td>
-				<td sdval="0" sdnum="1033;"><b>10101100</b></td>
-				<td sdval="1" sdnum="1033;"><b>00010000</b></td>
-				<td sdval="2" sdnum="1033;"><b>00001110</b></td>
-				<td class="right" sdval="3" sdnum="1033;"><b>00000000</b></td>
+				<td class="left"><b>10101100</b></td>
+				<td class="left"><b>00010000</b></td>
+				<td class="left"><b>00001110</b></td>
+				<td class="right"><b>00000000</b></td>
 			</tr>
 			<tr><td class="left" style="height: 22px"><b>IP address 4</b></td>
 				<td>:</td>
-				<td sdval="0" sdnum="1033;"><b>10101100</b></td>
-				<td sdval="1" sdnum="1033;"><b>00010000</b></td>
-				<td sdval="2" sdnum="1033;"><b>00001111</b></td>
-				<td class="right" sdval="3" sdnum="1033;"><b>00000000</b></td>
+				<td class="left"><b>10101100</b></td>
+				<td class="left"><b>00010000</b></td>
+				<td class="left"><b>00001111</b></td>
+				<td class="right"><b>00000000</b></td>
 			</tr>
 		</tbody>
 	</table>
