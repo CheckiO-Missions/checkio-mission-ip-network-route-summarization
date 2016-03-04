@@ -41,6 +41,15 @@ td
 	Route summarization, also called route aggregation, consists in reducing the number of routes by aggregating them into a "summary route".<br><br>
 
 	Let's consider the following example:<br>
+	
+<p style="text-align: center;">
+    <img class="for_info_only"
+         title="summary route"
+         src="{{MEDIA}}summary.PNG"
+         alt="summary route"
+         width="450px"/>
+</p>
+	
 	We have 4 routers connected to A. A is aware about all 4 IP addresses, because it has a direct interface to each of them. However, A will not send them all to B.<br>
 	Instead, it will aggregates the addresses into a summary route, and send this new route to B. <br>
 	This implies that: <br><br>
