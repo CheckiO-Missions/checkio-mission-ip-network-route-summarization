@@ -24,32 +24,31 @@ td
 	An IP network is a set of routers that communicate routing information using a protocol. 
 	A router is uniquely identified by an IP address. 
 	In IPv4, an IP address consists of 32 bits, canonically represented as 4 decimal numbers of 8 bits each. The decimal numbers range from 0 (00000000) to 255 (11111111).
+	Each router has a "routing table" that contains a list of IP addresses, for the router to know where to send IP packets.
 </p>
 <p>
-	Luckily for the robots, you have ways to solve problems like this. Your CheckSum helps to reduce the likelihood of errors by introducing a <b>final character</b> that is calculated from the previous characters. With the proper reasoning, the final character can always be calculated. This way, when inputs are entered, you can instantly verify that the final character matches the character predicted by CheckSum. If the two do not match, the input is rejected. The end result is that you would see fewer data entry errors.    
+	
 </p>
 <p>
-	<h3>How CheckSum Works:</h3>
-	CheckSum reasoning will need map points. This is a definition lookup for how to process the input necessary to generate the 
-	final character, which will be enable us instantly verify that our input is correct. 
-	In other words, for each sequence character of the input, we are confident there 
-	can only be <b>one possible input</b>, all thanks to this final character.
-	<br><br>
-	The steps you must take to obtain the final character are as follows: <br>
+	<h3>Route summarization in IP network</h3>
+	As the network grows large (hundreds of routers), the number of IP addresses in the routing table increases rapidly. 
+	Maintaining a high number of IP addresses in the routing table would result in a loss of performances (memory, bandwidth and CPU resources limitation).
+	Route summarization, also called route aggregation, consists in reducing the number of routes by aggregating them into a "summary route". <br>
+
+	Let's consider the following example: 
+	
+	
+	We have 4 routers connected to A. A is aware about all 4 IP addresses, because it has a direct interface to each of them. However, A will not send them all to B.
+	Instead, it will aggregates the addresses into a summary route, and send this new route to B. 
+	This implies that: <br>
 	<ol>
-		<li style="padding-top: 8px; padding-left: 10%; width: 80%;">From the rightmost input, traverse from <b>right to left</b>, and apply 'map point character lookup' for even-indexed characters.</li>
-		<li style="padding-left: 10%; width: 80%;">Add map point results for even-indexed characters with the unchanged digits from the original number.</li>
-		<li style="padding-left: 10%; width: 80%;">Find the remainder of this sum with 10. For an example sum of 67, the remainder is 7. ( 67 modulo 10 = 7 )</li>
-		<li style="padding-left: 10%; width: 80%;">Your final character should be 0 if the sum is a multiple-of-10, but it should be 10 minus remainder if the sum is not a multiple-of-10.</li>
-	</ol>
-	To generate the 'map point character lookup' table: <br>
-	<ol>
-		<li style="padding-top: 8px; padding-left: 10%; width: 80%;">Double the value of a character.</li>
-		<li style="padding-left: 10%; width: 80%;">If the product of this doubling operation is greater than 9 (e.g: 7 * 2 = 14), reduce it by summing the digits of the product. (i.e., find its <b>digital root</b>. e.g., 10: 1 + 0 = 1, 14: 1 + 4 = 5) Only do this once. Even if the sum is greater than 9, leave it alone.</li>
+		<li style="padding-top: 8px; padding-left: 10%; width: 80%;">Less bandwidth is used on the link between A and B.</li>
+		<li style="padding-left: 10%; width: 80%;">B saves memory: it has only one route to store in its routing table</li>
+		<li style="padding-left: 10%; width: 80%;">B saves CPU resources: there are less entries to consider when handling incoming IP packets</li>
 	</ol>
 </p>    
 <p>
-	<h3>Could you give me an example please?</h3>
+	<h3>Computing an summary route</h3>
 	Okay, take a look this example for a (pretend) account number: "7992739871". We will add final character to it,
 	so it looks something like: "7992739871<em>x</em>," with <em>x</em> being the final character-to-be-found.
 	<br><br>
@@ -60,7 +59,7 @@ td
 		<colgroup width="18"></colgroup>
 		<colgroup span="14" width="36"></colgroup>
 		<tbody>
-			<tr><td class="left" style="height: 22px"><b>Digits</b></td>
+			<tr><td class="left" style="height: 22px"><b>IP address 1</b></td>
 				<td>:</td>
 				<td sdval="0" sdnum="1033;"><b>0</b></td>
 				<td sdval="1" sdnum="1033;"><b>1</b></td>
