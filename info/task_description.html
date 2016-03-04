@@ -21,30 +21,28 @@ td
 }
 </style>
 <p>
-	An IP network is a set of routers that communicate routing information using a protocol. 
-	A router is uniquely identified by an IP address. 
-	In IPv4, an IP address consists of 32 bits, canonically represented as 4 decimal numbers of 8 bits each. The decimal numbers range from 0 (00000000) to 255 (11111111).
-	Each router has a "routing table" that contains a list of IP addresses, for the router to know where to send IP packets.
+	An IP network is a set of routers that communicate routing information using a protocol.
+	A router is uniquely identified by an IP address. <br>
+	In IPv4, an IP address consists of 32 bits, canonically represented as 4 decimal numbers of 8 bits each. The decimal numbers range from 0 (00000000) to 255 (11111111).<br>
+	Each router has a "routing table" that contains a list of IP addresses, for the router to know where to send IP packets.<br>
 </p>
 <p>
 	
 </p>
 <p>
 	<h3>Route summarization in IP network</h3>
-	As the network grows large (hundreds of routers), the number of IP addresses in the routing table increases rapidly. 
-	Maintaining a high number of IP addresses in the routing table would result in a loss of performances (memory, bandwidth and CPU resources limitation).
-	Route summarization, also called route aggregation, consists in reducing the number of routes by aggregating them into a "summary route". <br>
+	As the network grows large (hundreds of routers), the number of IP addresses in the routing table increases rapidly.
+	Maintaining a high number of IP addresses in the routing table would result in a loss of performances (memory, bandwidth and CPU resources limitation).<br>
+	Route summarization, also called route aggregation, consists in reducing the number of routes by aggregating them into a "summary route".<br><br>
 
-	Let's consider the following example: 
-	
-	
-	We have 4 routers connected to A. A is aware about all 4 IP addresses, because it has a direct interface to each of them. However, A will not send them all to B.
-	Instead, it will aggregates the addresses into a summary route, and send this new route to B. 
-	This implies that: <br>
+	Let's consider the following example:<br>
+	We have 4 routers connected to A. A is aware about all 4 IP addresses, because it has a direct interface to each of them. However, A will not send them all to B.<br>
+	Instead, it will aggregates the addresses into a summary route, and send this new route to B. <br>
+	This implies that: <br><br>
 	<ol>
-		<li style="padding-top: 8px; padding-left: 10%; width: 80%;">Less bandwidth is used on the link between A and B.</li>
-		<li style="padding-left: 10%; width: 80%;">B saves memory: it has only one route to store in its routing table</li>
-		<li style="padding-left: 10%; width: 80%;">B saves CPU resources: there are less entries to consider when handling incoming IP packets</li>
+		<li style="padding-top: 8px; padding-left: 10%; width: 80%;">- Less bandwidth is used on the link between A and B.</li>
+		<li style="padding-left: 10%; width: 80%;">- B saves memory: it has only one route to store in its routing table</li>
+		<li style="padding-left: 10%; width: 80%;"- >B saves CPU resources: there are less entries to consider when handling incoming IP packets</li>
 	</ol>
 </p>    
 <p>
@@ -53,6 +51,36 @@ td
 	so it looks something like: "7992739871<em>x</em>," with <em>x</em> being the final character-to-be-found.
 	<br><br>
 	Here is what a 'map point character lookup' table looks like for 0 through 9:
+	<br><br>
+	<table cellspacing="0" cols="16" border="0" style="margin-left: 15%;">
+		<colgroup width="129"></colgroup>
+		<colgroup width="18"></colgroup>
+		<colgroup span="14" width="36"></colgroup>
+		<tbody>
+			<tr><td class="left" style="height: 22px"><b>IP address 1</b></td>
+				<td>:</td>
+				<td sdval="0" sdnum="1033;"><b>172.16.12.0</b></td>
+				<td class="right" sdval="9" sdnum="1033;"><b>9</b></td>		
+			</tr>
+			<tr><td class="left" style="height: 22px"><b>IP address 2</b></td>
+				<td>:</td>
+				<td sdval="0" sdnum="1033;"><b>172.16.13.0</b></td>
+				<td class="right" sdval="9" sdnum="1033;"><b>9</b></td>		
+			</tr>
+			<tr><td class="left" style="height: 22px"><b>IP address 3</b></td>
+				<td>:</td>
+				<td sdval="0" sdnum="1033;"><b>172.16.14.0</b></td>
+				<td class="right" sdval="9" sdnum="1033;"><b>9</b></td>		
+			</tr>
+			<tr><td class="left" style="height: 22px"><b>IP address 4</b></td>
+				<td>:</td>
+				<td sdval="0" sdnum="1033;"><b>172.16.15.0</b></td>
+				<td class="right" sdval="9" sdnum="1033;"><b>9</b></td>		
+			</tr>
+		</tbody>
+	</table>
+<br><br>
+
 	<br><br>
 	<table cellspacing="0" cols="16" border="0" style="margin-left: 15%;">
 		<colgroup width="129"></colgroup>
@@ -115,6 +143,12 @@ td
 		</tbody>
 	</table>
 <br><br>
+
+
+
+
+
+
 And here is how we will obtain final character:
 <br><br>
 <table cellspacing="0" cols="13" border="0" style="margin-left: 15%;">
