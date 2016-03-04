@@ -47,10 +47,8 @@ td
 </p>    
 <p>
 	<h3>Computing an summary route</h3>
-	Okay, take a look this example for a (pretend) account number: "7992739871". We will add final character to it,
-	so it looks something like: "7992739871<em>x</em>," with <em>x</em> being the final character-to-be-found.
-	<br><br>
-	Here is what a 'map point character lookup' table looks like for 0 through 9:
+
+	A has all 4 addresses stored in its routing table. 
 	<br><br>
 	<table cellspacing="0" cols="16" border="0" style="margin-left: 15%;">
 		<colgroup width="129"></colgroup>
@@ -81,6 +79,7 @@ td
 	</table>
 <br><br>
 
+	A will convert these IP addresses to binary format, align them and find the boundary line between the common part on the left (where all bits are equal), and the uncommon part on the right.
 	<br><br>
 	<table cellspacing="0" cols="16" border="0" style="margin-left: 15%;">
 		<colgroup width="129"></colgroup>
@@ -89,232 +88,59 @@ td
 		<tbody>
 			<tr><td class="left" style="height: 22px"><b>IP address 1</b></td>
 				<td>:</td>
-				<td sdval="0" sdnum="1033;"><b>0</b></td>
-				<td sdval="1" sdnum="1033;"><b>1</b></td>
-				<td sdval="2" sdnum="1033;"><b>2</b></td>
-				<td sdval="3" sdnum="1033;"><b>3</b></td>
-				<td sdval="4" sdnum="1033;"><b>4</b></td>
-				<td sdval="5" sdnum="1033;"><b>5</b></td>
-				<td sdval="6" sdnum="1033;"><b>6</b></td>
-				<td sdval="7" sdnum="1033;"><b>7</b></td>
-				<td sdval="8" sdnum="1033;"><b>8</b></td>
+				<td sdval="0" sdnum="1033;"><b>10101100</b></td>
+				<td sdval="1" sdnum="1033;"><b>00010000</b></td>
+				<td sdval="2" sdnum="1033;"><b>00001100</b></td>
+				<td sdval="3" sdnum="1033;"><b>00000000</b></td>
 				<td class="right" sdval="9" sdnum="1033;"><b>9</b></td>		
 			</tr>
-			<tr><td style="padding-left: 16px; border-bottom: 1px solid #000000; border-left: 1px solid #000000" height="22" align="LEFT"><b>Doubled</b></td>
-				<td style="border-bottom: 1px solid #000000" align="CENTER">:</td>
-				<td sdval="0" sdnum="1033;">0</td>
-				<td sdval="2" sdnum="1033;">2</td>
-				<td sdval="4" sdnum="1033;">4</td>
-				<td sdval="6" sdnum="1033;">6</td>
-				<td sdval="8" sdnum="1033;">8</td>
-				<td sdval="10" sdnum="1033;">10</td>
-				<td sdval="12" sdnum="1033;">12</td>
-				<td sdval="14" sdnum="1033;">14</td>
-				<td sdval="16" sdnum="1033;">16</td>
-				<td class="right" sdval="18" sdnum="1033;">18</td>
-			</tr>
-			<tr><td class="left" height="22" align="LEFT"><b>Reduced</b></td>
+			<tr><td class="left" style="height: 22px"><b>IP address 2</b></td>
 				<td>:</td>
-				<td sdval="0" sdnum="1033;">0</td>
-				<td sdval="2" sdnum="1033;">2</td>
-				<td sdval="4" sdnum="1033;">4</td>
-				<td sdval="6" sdnum="1033;">6</td>
-				<td sdval="8" sdnum="1033;">8</td>
-				<td>1+0</td>
-				<td>1+2</td>
-				<td>1+4</td>
-				<td>1+6</td>
-				<td class="right">1+8</td>
+				<td sdval="0" sdnum="1033;"><b>10101100</b></td>
+				<td sdval="1" sdnum="1033;"><b>00010000</b></td>
+				<td sdval="2" sdnum="1033;"><b>00001101</b></td>
+				<td sdval="3" sdnum="1033;"><b>00000000</b></td>
+				<td class="right" sdval="9" sdnum="1033;"><b>9</b></td>		
 			</tr>
-			<tr>
-				<td style="border-bottom: 1px solid #000000; padding-left: 16px; border-left: 1px solid #000000" height="22" align="LEFT"><b>Map Point</b></td>
+			<tr><td class="left" style="height: 22px"><b>IP address 3</b></td>
 				<td>:</td>
-				<td sdval="0" sdnum="1033;">0</td>
-				<td sdval="2" sdnum="1033;">2</td>
-				<td sdval="4" sdnum="1033;">4</td>
-				<td sdval="6" sdnum="1033;">6</td>
-				<td sdval="8" sdnum="1033;">8</td>
-				<td sdval="1" sdnum="1033;">1</td>
-				<td sdval="3" sdnum="1033;">3</td>
-				<td sdval="5" sdnum="1033;">5</td>
-				<td sdval="7" sdnum="1033;">7</td>
-				<td class="right" sdval="9" sdnum="1033;">9</td>		
+				<td sdval="0" sdnum="1033;"><b>10101100</b></td>
+				<td sdval="1" sdnum="1033;"><b>00010000</b></td>
+				<td sdval="2" sdnum="1033;"><b>00001110</b></td>
+				<td sdval="3" sdnum="1033;"><b>00000000</b></td>
+				<td class="right" sdval="9" sdnum="1033;"><b>9</b></td>		
+			</tr>
+			<tr><td class="left" style="height: 22px"><b>IP address 4</b></td>
+				<td>:</td>
+				<td sdval="0" sdnum="1033;"><b>10101100</b></td>
+				<td sdval="1" sdnum="1033;"><b>00010000</b></td>
+				<td sdval="2" sdnum="1033;"><b>00001111</b></td>
+				<td sdval="3" sdnum="1033;"><b>00000000</b></td>
+				<td class="right" sdval="9" sdnum="1033;"><b>9</b></td>		
 			</tr>
 		</tbody>
 	</table>
 <br><br>
 
+A creates a new IP address made of the common bits, and all other bits set to "0". This new IP address is converted back to decimal numbers.
+Finally, A computes the number of commonts bits. The number of common bits is called "subnet".<br>
+The summary route is this new IP address, followed by a slash and the subnet: 172.16.12.0/22
 
-
-
-
-
-And here is how we will obtain final character:
-<br><br>
-<table cellspacing="0" cols="13" border="0" style="margin-left: 15%;">
-	<colgroup width="142"></colgroup>
-	<colgroup width="18"></colgroup>
-	<colgroup span="10" width="26"></colgroup>
-	<colgroup width="85"></colgroup>
-	<tbody>
-	<tr>
-		<td class="left" height="17" align="LEFT"><b>Index</b></td>
-		<td>:</td>
-		<td sdval="0" sdnum="1033;">0</td>
-		<td sdval="1" sdnum="1033;">1</td>
-		<td sdval="2" sdnum="1033;">2</td>
-		<td sdval="3" sdnum="1033;">3</td>
-		<td sdval="4" sdnum="1033;">4</td>
-		<td sdval="5" sdnum="1033;">5</td>
-		<td sdval="6" sdnum="1033;">6</td>
-		<td sdval="7" sdnum="1033;">7</td>
-		<td sdval="8" sdnum="1033;">8</td>
-		<td class="right" sdval="9" sdnum="1033;">9</td>
-	</tr>
-	<tr>
-		<td style="padding-left: 16px; border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000" height="17" align="LEFT"><b>Reversed</b></td>
-		<td>:</td>
-		<td sdval="1" sdnum="1033;">1</td>
-		<td sdval="7" sdnum="1033;">7</td>
-		<td sdval="8" sdnum="1033;">8</td>
-		<td sdval="9" sdnum="1033;">9</td>
-		<td sdval="3" sdnum="1033;">3</td>
-		<td sdval="7" sdnum="1033;">7</td>
-		<td sdval="2" sdnum="1033;">2</td>
-		<td sdval="9" sdnum="1033;">9</td>
-		<td sdval="9" sdnum="1033;">9</td>
-		<td class="right" sdval="7" sdnum="1033;">7</td>
-	</tr>
-	<tr>
-		<td class="left" height="17" align="LEFT"><b>From table</b></td>
-		<td>:</td>
-		<td sdval="2" sdnum="1033;">2</td>
-		<td sdval="" sdnum="1033;"></td>
-		<td sdval="7" sdnum="1033;">7</td>
-		<td sdval="" sdnum="1033;"></td>
-		<td sdval="6" sdnum="1033;">6</td>
-		<td sdval="" sdnum="1033;"></td>
-		<td sdval="4" sdnum="1033;">4</td>
-		<td sdval="" sdnum="1033;"></td>
-		<td sdval="9" sdnum="1033;">9</td>
-		<td class="right" sdval="" sdnum="1033;"></td>
-		<td class="right" rowspan="2" align="center" ><b><font color="#0066CC">Total: 67</font></b></td>
-	</tr>
-	<tr>
-		<td class="left" height="17" align="LEFT"><b>Unchanged</b></td>
-		<td>:</td>
-		<td sdval="" sdnum="1033;"></td>
-		<td sdval="7" sdnum="1033;">7</td>
-		<td sdval="" sdnum="1033;"></td>
-		<td sdval="6" sdnum="1033;">9</td>
-		<td sdval="" sdnum="1033;"></td>
-		<td sdval="4" sdnum="1033;">7</td>
-		<td sdval="" sdnum="1033;"></td>
-		<td sdval="9" sdnum="1033;">9</td>
-		<td sdval="" sdnum="1033;"></td>
-		<td class="right" dval="7" sdnum="1033;">7</td>
-	</tr>
-	<tr>
-		<td class="left" rowspan="2" height="34" align="LEFT" valign="MIDDLE"><b>Final Character</b></td>
-		<td style="border-bottom: 1px solid #000000" rowspan="2" align="CENTER" valign="MIDDLE">:</td>
-		<td style="border-bottom: 1px solid #000000" colspan="8" rowspan="2" align="RIGHT" valign="MIDDLE">10 - ( 67 % 10 ) = 10 - 7 =</td>
-		<td style="border-bottom: 1px solid #000000; border-right: 1px solid #000000" colspan="2" rowspan="2" align="CENTER" valign="MIDDLE" sdval="3" sdnum="1033;"><font size="4" style="color: #0066CC;">3</font></td>
-	</tr>
-</tbody></table>
-<br>
-	So, we can release the account number as follows: <span style="font-weight: bold; font-size: 1.2em;">799 273 9871 3</span>
-	<br>
-</p>
-<p>
-	<h3>Alphanumeric Input</h3>
-	To make this more interesting, we can use alphanumeric input, which is a possible combination of 10 digits and 26 capital letters. It means that we will have to upgrade our map point to support letters. How we achieve that? We use each character's ASCII value to help us determine the character sequence. For example: 'A' has an ASCII value 65. To determine its sequence in our map, we need to substract 48.
-	<br><br>
-	For this example, 'A' is 7 since 65 - 48 = 17, 17 * 2 = 34 and 3 + 4 = 7. (Remember to only apply 'map point character lookup' to even-indexed characters. If 'A' is an odd-indexed character, its value is 17)
-	<br>
-</p>
-<p>
-	<h3>Alphanumeric Example</h3>
-	Alright, we have another example here: "139MT". Let's see how we can obtain the final character... 
-	<br><br>
-	<table cellspacing="0" cols="13" border="0" style="margin-left: 8px;">
-		<colgroup width="142"></colgroup>
-		<colgroup width="18"></colgroup>
-		<colgroup span="10" width="26"></colgroup>
-		<colgroup width="85"></colgroup>
-		<tbody>
-			<tr>
-				<td class="left" height="17" align="LEFT"><b>Reversed</b></td>
-				<td>:</td>
-				<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000" colspan="2" align="CENTER" valign="MIDDLE">T</td>
-				<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000" colspan="2" align="CENTER" valign="MIDDLE">M</td>
-				<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000" colspan="2" align="CENTER" valign="MIDDLE" sdval="9" sdnum="1033;">9</td>
-				<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000" colspan="2" align="CENTER" valign="MIDDLE" sdval="3" sdnum="1033;">3</td>
-				<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-right: 1px solid #000000" colspan="2" align="CENTER" valign="MIDDLE" sdval="1" sdnum="1033;">1</td>
-			</tr>
-			<tr>
-				<td class="left" height="17" align="LEFT"><b>Sum of digits</b></td>
-				<td>:</td>
-				<td style="border-bottom: 1px solid #000000" colspan="2" align="CENTER" valign="MIDDLE" sdval="9" sdnum="1033;"><b><font color="#0066CC">9</font></b></td>
-				<td style="border-bottom: 1px solid #000000" colspan="2" align="CENTER" valign="MIDDLE" sdval="29" sdnum="1033;">29</td>
-				<td style="border-bottom: 1px solid #000000" colspan="2" align="CENTER" valign="MIDDLE" sdval="9" sdnum="1033;"><b><font color="#0066CC">9</font></b></td>
-				<td style="border-bottom: 1px solid #000000" colspan="2" align="CENTER" valign="MIDDLE" sdval="3" sdnum="1033;">3</td>
-				<td style="border-bottom: 1px solid #000000;border-right: 1px solid #000000;" colspan="2" align="CENTER" valign="MIDDLE" sdval="2" sdnum="1033;"><b><font color="#0066CC">2</font></b></td>
-				<td class="right"><b><font color="#0066CC">Total: 52</font></b></td>
-			</tr>
-			<tr>
-				<td class="left" rowspan="2" height="34" align="LEFT" valign="MIDDLE"><b>Final Character</b></td>
-				<td style="border-bottom: 1px solid #000000" rowspan="2" align="CENTER" valign="MIDDLE">:</td>
-				<td style="border-bottom: 1px solid #000000" colspan="8" rowspan="2" align="CENTER" valign="MIDDLE">10 - ( 52 % 10 ) = 10 - 2 =</td>
-				<td style="border-bottom: 1px solid #000000; border-right: 1px solid #000000" colspan="2" rowspan="2" align="CENTER" valign="MIDDLE" sdval="8" sdnum="1033;"><font size="4" style="color: #0066CC;">8</font></td>
-			</tr>
-		</tbody>
-	</table>
-</p> 
-<p>
-	Here is detail for how we do it:
-	<ul>
-	<li>T:&nbsp; ASCII of 84, 84 - 48 = 36, 36 * 2 = 72, and 7 + 2 = 9</li>
-	<li>M:&nbsp; ASCII of 77, and 77 - 48 = 29</li>
-	<li>9:&nbsp; from map point is, 9, or ASCII of 57, 57 - 48 = 9, 9 * 2 = 18, and 1 + 8 = 9</li>
-	<li>3:&nbsp; just 3, or ASCII of 51, and 51 - 48 = 3</li>
-	<li>1:&nbsp; from map point is, 2, or ASCII of 49, 49 - 48 = 1, and 1 * 2 = 2</li>
-	<li>Sum of digits is 52, since 9 + 29 + 9 + 3 + 1 = 52</li>
-	<li>Final character is 8, since 10 - ( 52 % 10 ) = 10 - 2 = 8</li>
-	</ul>
-	<br>
-	Now it's time to test your CheckSum module!
 </p>
 
 <p>
-	<b>Input: </b> Unsanitized numeric or alphanumeric due to formatting purpose
+	<b>Input: </b> The IP addresses to be summarized
 </p>
 
 <p>
-	<b>Output: </b> List of its final character and sum of digits
+	<b>Output: </b> A string containing the summary route, represented as an IP address, followed by a slash and the subnet.
 </p>
 
-{% if "python 2" in interpreter|lower %}
+
 <div class="for_info_only">
 	<p>
 		<b>Example:</b>
 	</p>
-	<pre class="brush: python">checkio(u"799 273 9871") == ["3", 67]
-checkio(u"139-MT") == ["8", 52])
-checkio(u"123") == ["0", 10])
-checkio(u"999_999") == ["6", 54])
-checkio(u"+61 820 9231 55") == ["3", 37])
-checkio(u"VQ/WEWF/NY/8U") == ["9", 201])</pre>
+	<pre class="brush: python">checkio(172.16.12.0, 172.16.13.0, 172.16.14.0, 172.16.15.0) == "172.16.12.0/22"
+</pre>
 </div>
-{% else %}
-<div class="for_info_only">
-	<p>
-		<b>Example:</b>
-	</p>
-	<pre class="brush: python">checkio("799 273 9871") == ["3", 67]
-checkio("139-MT") == ["8", 52])
-checkio("123") == ["0", 10])
-checkio("999_999") == ["6", 54])
-checkio("+61 820 9231 55") == ["3", 37])
-checkio("VQ/WEWF/NY/8U") == ["9", 201])</pre>
-</div>
-{% endif %}
