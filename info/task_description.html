@@ -127,7 +127,7 @@ The summary route is this new IP address, followed by a slash and the subnet: 17
 </p>
 
 <p>
-	<b>Input: </b> The IP addresses to be summarized
+	<b>Input: </b> The IP addresses to be summarized as strings.
 </p>
 
 <p>
@@ -139,6 +139,14 @@ The summary route is this new IP address, followed by a slash and the subnet: 17
 	<p>
 		<b>Example:</b>
 	</p>
-	<pre class="brush: python">checkio(172.16.12.0, 172.16.13.0, 172.16.14.0, 172.16.15.0) == "172.16.12.0/22"
+	<pre class="brush: python">checkio("172.16.12.0", "172.16.13.0", "172.16.14.0", "172.16.15.0") == "172.16.12.0/22"
 </pre>
 </div>
+
+<p>
+	<b>Preconditions: </b><br>
+	all(re.match(r"^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$",d) for d in data))<br>
+	all(-1 < int(n) < 256 for n in d.split(".") for d in data)<br>
+	len(data) == len(set(data))<br>
+</p>
+
