@@ -1,5 +1,5 @@
-checkio-task-check-digit
+checkio-task-route-summarization
 =====================
 
-This is the task for Checkio "CheckSum"
+This is the task for Checkio "Route summarization"
 
