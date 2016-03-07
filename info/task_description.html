@@ -35,7 +35,7 @@
 	
 </p>
 <p>
-	<h3>Route summarization in IP network</h3>
+	<h3>Route summarization in IP networks</h3>
 	As the network grows large (hundreds of routers), the number of IP addresses in the routing table increases rapidly.
 	Maintaining a high number of IP addresses in the routing table would result in a loss of performances (memory, bandwidth and CPU resources limitation).<br>
 	Route summarization, also called route aggregation, consists in reducing the number of routes by aggregating them into a "summary route".<br><br>
@@ -50,19 +50,19 @@
          width="450px"/>
 </p>
 	
-	We have 4 routers connected to A. A is aware about all 4 IP addresses, because it has a direct interface to each of them. However, A will not send them all to B.<br>
-	Instead, it will aggregates the addresses into a summary route, and send this new route to B. <br>
+	We have 4 routers connected to <strong>A</strong>. <strong>A</strong> is aware about all 4 IP addresses, because it has a direct interface to each of them. However, <strong>A</strong> will not send them all to <strong>B</strong>.<br>
+	Instead, it will aggregate the addresses into a summary route, and send this new route to <strong>B</strong>. <br>
 	This implies that: <br><br>
 	<ol>
-		<li style="padding-top: 8px; padding-left: 10%; width: 80%;">- Less bandwidth is used on the link between A and B.</li>
-		<li style="padding-left: 10%; width: 80%;">- B saves memory: it has only one route to store in its routing table</li>
-		<li style="padding-left: 10%; width: 80%;">- B saves CPU resources: there are less entries to consider when handling incoming IP packets</li>
+		<li style="padding-top: 8px; padding-left: 10%; width: 80%;">- Less bandwidth is used on the link between <strong>A</strong> and <strong>B</strong>.</li>
+		<li style="padding-left: 10%; width: 80%;">- <strong>B</strong> saves memory: it has only one route to store in its routing table</li>
+		<li style="padding-left: 10%; width: 80%;">- <strong>B</strong> saves CPU resources: there are less entries to consider when handling incoming IP packets</li>
 	</ol>
 </p>    
 <p>
-	<h3>Computing an summary route</h3>
+	<h3>Computing a summary route</h3>
 
-	A has all 4 addresses stored in its routing table. 
+	<strong><strong>A</strong> has all 4 addresses stored in its routing table. 
 	<br><br>
 	<table cellspacing="0" cols="16" border="0" style="margin-left: 15%;">
 		<colgroup width="129"></colgroup>
@@ -85,7 +85,7 @@
 	</table>
 <br><br>
 
-	A will convert these IP addresses to binary format, align them and find the boundary line between the common part on the left (where all bits are equal), and the uncommon part on the right.
+	<strong>A</strong> will convert these IP addresses to binary format, align them and find the boundary line between the common prefix on the left (highlighted in red), and the remaining bits on the right.
 	<br><br>
 	<table cellspacing="0" cols="16" border="0" style="margin-left: 15%;">
 		<colgroup width="140"></colgroup>
@@ -120,8 +120,8 @@
 	</table>
 <br><br>
 
-A creates a new IP address made of the common bits, and all other bits set to "0". This new IP address is converted back to decimal numbers.
-Finally, A computes the number of commonts bits. The number of common bits is called "subnet".<br>
+<strong>A</strong> creates a new IP address made of the common bits, and all other bits set to "0". This new IP address is converted back to decimal numbers.
+Finally, <strong>A</strong> computes the number of commonts bits. The number of common bits is called "subnet".<br>
 The summary route is this new IP address, followed by a slash and the subnet: 172.16.12.0/22
 
 </p>
