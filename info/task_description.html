@@ -120,7 +120,7 @@
 	</table>
 <br><br>
 
-<strong>A</strong> creates a new IP address made of the common bits, and all other bits set to "0". This new IP address is converted back to decimal numbers.
+<strong>A</strong> creates a new IP address made of the common bits, and all other bits set to "0".<br> This new IP address is converted back to decimal numbers.<br>
 Finally, <strong>A</strong> computes the number of common bits, also called "subnet".<br>
 The summary route is this new IP address, followed by a slash and the subnet: 172.16.12.0/22
 
@@ -150,6 +150,6 @@ checkio(["172.16.12.0", "172.16.13.0", "172.155.43.9", "146.11.2.2"]) == "128.0.
 	<b>Preconditions: </b><br>
 	all(re.match(r"^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$",d) for d in data))<br>
 	all(-1 < int(n) < 256 for n in d.split(".") for d in data)<br>
-	len(data) == len(set(data))<br>
+	len(data) == len(set(data)) and len(data) > 1</td></td><br>
 </p>
 
