@@ -1,17 +1,17 @@
 <p>
 	Un réseau IP est un ensemble de routeurs qui communiquent des informations par le biais d'un protocole.
-	Un routeur est identifié uniquement par une adresse IP. <br>
-	Dans IPv4, une adresse IP est composée de 32 bits, canoniquement représentée par 4 nombres décimaux de 8 bits chacun, de l'intervalle des nombres entiers de 0 (00000000) 
+	Un routeur est identifié de façon univoque par une adresse IP. <br>
+	En IPv4, une adresse IP est composée de 32 bits, canoniquement représentée par 4 nombres décimaux de 8 bits chacun, de l'intervalle des nombres entiers de 0 (00000000) 
 	à 255 (11111111).<br>
-	Chaque routeur possède une "routing table" qui contient une liste d'adresses IP, afin qu'il sache où envoyer des paquets IP.<br>
+	Chaque routeur possède une table de routage qui contient une liste d'adresses IP, afin qu'il sache où envoyer des paquets IP.<br>
 </p>
 <p>
 	
 </p>
 <p>
 	<h3>"Route summarization" (réduction d'itinéraire) dans les réseaux IP</h3>
-	Puisque le réseau grossit sans cesse (des centaines de routeurs), le nombre d'adresses IP dans la "routing table" croît très vite.
-	Si l'on conserve un grand nombre d'adresses IP dans la "routing table", cela va entraîner une perte de performances 
+	Puisque le réseau grossit sans cesse (des centaines de routeurs), le nombre d'adresses IP dans la table de routage croît très vite.
+	Si l'on conserve un grand nombre d'adresses IP dans la table de routage, cela va entraîner une perte de performances 
 	(mémoire, bande passante and limitation des ressources CPU).<br>
 	Le principe de "route summarization", appelée aussi "route aggregation", consiste à reduire le nombre de "routes" (itinéraires) en les regroupant 
 	dans un "summary route" (itinéraire réduit).<br><br>
@@ -33,14 +33,14 @@
 	Ce qui implique que: <br><br>
 	<ol>
 		<li style="padding-top: 8px; padding-left: 10%; width: 80%;">- Le lien entre <strong>A</strong> et <strong>B</strong> utilise moins de bande passante</li>
-		<li style="padding-left: 10%; width: 80%;">- <strong>B</strong> économise de la mémoire: il n'a qu'un chemin à enregistrer dans sa "routing table"</li>
+		<li style="padding-left: 10%; width: 80%;">- <strong>B</strong> économise de la mémoire: il n'a qu'un chemin à enregistrer dans sa table de routage</li>
 		<li style="padding-left: 10%; width: 80%;">- <strong>B</strong> économise de ressources CPU: il y a moins d'entrées à considérer lors de la manipulation des paquets IP</li>
 	</ol>
 </p>    
 <p>
 	<h3>Programmer une "summary route"</h3>
 
-	<strong>A</strong> stocke les 4 adresses IP dans sa "routing table". 
+	<strong>A</strong> stocke les 4 adresses IP dans sa table de routage. 
 	<br><br>
 	<table cellspacing="0" cols="16" border="0">
 		<colgroup width="129"></colgroup>
