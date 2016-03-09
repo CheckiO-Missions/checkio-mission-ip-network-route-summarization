@@ -1,0 +1,134 @@
+<p>
+	Un réseau IP est un ensemble de routeurs qui communiquent des informations par le biais d'un protocole.
+	Un routeur est identifié uniquement par une adresse IP. <br>
+	Dans IPv4, une adresse IP est composée de 32 bits, canoniquement représentée par 4 nombres décimaux de 8 bits chacun, de l'intervalle des nombres entiers de 0 (00000000) 
+	à 255 (11111111).<br>
+	Chaque routeur possède une "routing table" qui contient une liste d'adresses IP, afin qu'il sache où envoyer des paquets IP.<br>
+</p>
+<p>
+	
+</p>
+<p>
+	<h3>"Route summarization" (réduction d'itinéraire) dans les réseaux IP</h3>
+	Puisque le réseau grossit sans cesse (des centaines de routeurs), le nombre d'adresses IP dans la "routing table" croît très vite.
+	Si l'on conserve un grand nombre d'adresses IP dans la "routing table", cela va entraîner une perte de performances 
+	(mémoire, bande passante and limitation des ressources CPU).<br>
+	Le principe de "route summarization", appelée aussi "route aggregation", consiste à reduire le nombre de "routes" (itinéraires) en les regroupant 
+	dans un "summary route" (itinéraire réduit).<br><br>
+
+	Observons l'exemple suivant:<br>
+	
+<p style="text-align: center;">
+    <img class="for_info_only"
+         title="summary route"
+         src="https://checkio.s3.amazonaws.com/task/media/49d80613705b46d8a5ed24088088d65a/summarize.PNG"
+         alt="summary route"
+         width="700px"/>
+</p>
+	
+	Nous avons 4 routeurs connectés à <strong>A</strong>. <strong>A</strong> connaît les 4 adresses IP, 
+	parce qu'il a une interface directe avec chacune d'entre elles.
+	Toutefois, <strong>A</strong> ne va pas les envoyer toutes à <strong>B</strong>.<br>
+	Au lieu de cela, il va regrouper les adresses en une "summary route", et envoyer cette nouvelle "route" à  <strong>B</strong>. <br>
+	Ce qui implique que: <br><br>
+	<ol>
+		<li style="padding-top: 8px; padding-left: 10%; width: 80%;">- Le lien entre <strong>A</strong> et <strong>B</strong> utilise moins de bande passante</li>
+		<li style="padding-left: 10%; width: 80%;">- <strong>B</strong> économise de la mémoire: il n'a qu'un chemin à enregistrer dans sa "routing table"</li>
+		<li style="padding-left: 10%; width: 80%;">- <strong>B</strong> économise de ressources CPU: il y a moins d'entrées à considérer lors de la manipulation des paquets IP</li>
+	</ol>
+</p>    
+<p>
+	<h3>Programmer une "summary route"</h3>
+
+	<strong>A</strong> stocke les 4 adresses IP dans sa "routing table". 
+	<br><br>
+	<table cellspacing="0" cols="16" border="0">
+		<colgroup width="129"></colgroup>
+		<colgroup width="18"></colgroup>
+		<colgroup span="14" width="36"></colgroup>
+		<tbody>
+			<tr><td class="left" style="height: 22px"><b>Adresse 1</b></td>
+				<td class="right sdval="0" sdnum="1033;"><b>172.16.12.0</b></td>
+			</tr>
+			<tr><td class="left" style="height: 22px"><b>Adresse 2</b></td>
+				<td class="right sdval="0" sdnum="1033;"><b>172.16.13.0</b></td>
+			</tr>
+			<tr><td class="left" style="height: 22px"><b>Adresse 3</b></td>
+				<td class="right sdval="0" sdnum="1033;"><b>172.16.14.0</b></td>
+			</tr>
+			<tr><td class="left" style="height: 22px"><b>Adresse 4</b></td>
+				<td class="right" sdval="0" sdnum="1033;"><b>172.16.15.0</b></td>
+			</tr>
+		</tbody>
+	</table>
+<br><br>
+
+	<strong>A</strong> va convertir ces adresses IP au format binaire, les aligner et trouver la limite entre
+	le préfixe commun situé à gauche (indiqué en rouge), et les bits restants à droite.
+	<br><br>
+	<table cellspacing="0" cols="16" border="0">
+		<colgroup width="140"></colgroup>
+		<colgroup width="18"></colgroup>
+		<colgroup span="14" width="45"></colgroup>
+		<tbody>
+			<tr><td class="left" style="height: 22px; width: 50px"><b>Adresse 1</b></td>
+				<td class="left"><b><font color="red">10101100</font></b></td>
+				<td class="left"><b><font color="red">00010000</font></b></td>
+				<td class="left"><b><font color="red">000011</font>00</b></td>
+				<td class="right"><b>00000000</b></td>
+			</tr>
+			<tr><td class="left" style="height: 22px; width: 50px"><b>Adresse 2</b></td>
+				<td class="left"><b><font color="red">10101100</font></b></td>
+				<td class="left"><b><font color="red">00010000</font></b></td>
+				<td class="left"><b><font color="red">000011</font>01</b></td>
+				<td class="right"><b>00000000</b></td>
+			</tr>
+			<tr><td class="left" style="height: 22px; width: 50px"><b>Adresse 3</b></td>
+				<td class="left"><b><font color="red">10101100</font></b></td>
+				<td class="left"><b><font color="red">00010000</font></b></td>
+				<td class="left"><b><font color="red">000011</font>10</b></td>
+				<td class="right"><b>00000000</b></td>
+			</tr>
+			<tr><td class="left" style="height: 22px; width: 50px"><b>Adresse 4</b></td>
+				<td class="left"><b><font color="red">10101100</font></b></td>
+				<td class="left"><b><font color="red">00010000</font></b></td>
+				<td class="left"><b><font color="red">000011</font>11</b></td>
+				<td class="right"><b>00000000</b></td>
+			</tr>
+		</tbody>
+	</table>
+<br><br>
+
+<strong>A</strong> crée une nouvelle adresse IP constituée des bits communs, et tous les autres bits mis à "0".<br>
+Cette nouvelle adresse IP est convertie à son tour en nombre décimaux.<br>
+Pour terminer, <strong>A</strong> évalue le nombre de bits communs, appelé "subnet".<br>
+La "summary route" est constituée de la nouvelle adresse IP, suivie d'un "slash" puis du "subnet": 172.16.12.0/22
+
+</p>
+
+<p>
+	<b>Input: </b> Une liste de chaînes de caractères qui contient les adresses IP.
+</p>
+
+<p>
+	<b>Output: </b> Une chaine de caractères qui contient la "summary route", qui représente une adresse IP, suivie d'un "slash" puis du "subnet".
+</p>
+
+
+<div class="for_info_only">
+	<p>
+		<b>Exemple:</b>
+	</p>
+	<pre class="brush: python">
+checkio(["172.16.12.0", "172.16.13.0", "172.16.14.0", "172.16.15.0"]) == "172.16.12.0/22"
+checkio(["172.16.12.0", "172.16.13.0", "172.155.43.9"]) == "172.0.0.0/8"
+checkio(["172.16.12.0", "172.16.13.0", "172.155.43.9", "146.11.2.2"]) == "128.0.0.0/2"
+</pre>
+</div>
+
+<p>
+	<b>Préconditions: </b><br>
+	all(re.match(r"^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$",d) for d in data))<br>
+	all(-1 < int(n) < 256 for n in d.split(".") for d in data)<br>
+	len(data) == len(set(data)) and len(data) > 1</td></td><br>
+</p>
